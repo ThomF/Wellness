@@ -1,0 +1,50 @@
+import { appState } from "../AppState.js";
+import { zensService } from "../Services/ZensService.js";
+import { getFormData } from "../Utils/FormHandler.js";
+import { Pop } from "../Utils/Pop.js";
+import { setHTML } from "../Utils/Writer.js";
+
+
+function _drawTodos(){
+    let template = ''
+    appState.zens.forEach(z => template += z.ZenTodo)
+    setHTML('todo-list', template)
+}
+
+export class ZensController{
+
+    constructor(){
+        console.log("zenscontroller")
+
+        this.getTodos()
+        appState.on('zens', _drawTodos)
+        
+    }
+
+    async handleTodoSubmit(){
+        let form = event?.target
+        let formData = getFormData(form)
+        await zensService.handTodoSubmit(formData)
+    }
+
+    async UpdateTodo(todoId){
+        try {
+            await zensService.updateTodo(todoId)
+        } catch (error) {
+            console.error(error)
+            Pop.error(error)
+        }
+    }
+
+    async getTodos(){
+        try {
+            await zensService.getTodos()
+        } catch (error) {
+            console.error(error)
+            Pop.error(error)
+        }
+    }
+    
+
+
+}
