@@ -21,6 +21,18 @@ export class ZensController{
         
     }
 
+
+    async exileNote(noteId){
+        try {
+            if(await Pop.confirm('Are you sure you want to Exile this Todo?')){
+                await zensService.exileNote(noteId)
+            }
+        } catch (error) {
+            console.error(error)
+            Pop.error(error)
+        }
+    }
+
     async handleTodoSubmit(){
         
     try {

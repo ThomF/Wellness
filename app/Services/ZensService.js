@@ -3,6 +3,16 @@ import { Zen } from "../Models/Zen.js"
 import { sandboxApi } from "./AxiosService.js"
 
 class ZensService{
+    async exileNote(noteId) {
+        const res = await sandboxApi.delete(`thomf/todos/${noteId}`)
+        console.log('[EXILE TODO]', res.data)
+
+        let todoIndex = appState.zens.findIndex(todo => todo.id == noteId)
+
+        appState.zens.splice(todoIndex, 1)
+        appState.emit('zens')
+
+    }
 
     async getTodos() {
         let res = await sandboxApi.get('thomf/todos')

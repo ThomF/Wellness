@@ -13,12 +13,19 @@ export class Zen{
 
     get ZenTodo(){
         return /*HTML */`
-        <div class="col-12 text-center">
+        <div class="row text-center">
+        <div class="col-1">
         <input ${this.completed ? 'checked' : '' } onchange="app.zensController.UpdateTodo('${this.id}')"
         class="form-check-input" type="checkbox" name="completed" value="" id="todoCheck">
-            <span>${this.description}</span>
         </div>
-        
+        <div class="col-3">
+        <h3>${this.description}</h3>
+        </div>
+        <div class="col-1">
+        <h3 class="mdi mdi-delete-circle " onclick="app.zensController.exileNote('${this.id}')"></h3>
+        </div>
+
+        </div>
         `
 
     }
