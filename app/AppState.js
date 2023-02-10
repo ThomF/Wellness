@@ -12,7 +12,8 @@ class AppState extends EventEmitter {
   zens = []
   /** @type {import('./Models/HomePage').HomePage | null} */
   background = null
-
+  /** @type {import('./Models/HomePage').HomePage[]} */
+  HomePage = []
 
 }
 
