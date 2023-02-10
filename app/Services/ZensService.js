@@ -18,6 +18,8 @@ class ZensService{
 
         const res = await sandboxApi.put(`thomf/todos/${todoId}`, {prepared : !foundTodo.prepared})
         console.log('[update todo]', res.data)
+
+        let createdTodo = new Zen
 // TODO delete
         // appState.zens.splice
 
@@ -28,11 +30,16 @@ class ZensService{
         const res = await sandboxApi.post('thomf/todos/', newTodo)
 
         console.log('[New Todo ZensService]', res)
+        let getTodo = new Zen(res.data)
+        appState.zens.push(getTodo)
+        appState.emit('zens')
+        appState.zen = getTodo
     }
 
     async getTodo(){
-        let res = await sandboxApi.get('thomf/todos/')
-        console.log('[my todos]',res)
+        let res = await sandboxApi.get('thomf/todos/', appState.zens)
+        console.log('[my todos]',res.data)
+        
     }
 
 

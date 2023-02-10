@@ -18,6 +18,7 @@ export class ZensController{
 
         this.getTodos()
         appState.on('zens', _drawTodos)
+        
     }
 
     async handleTodoSubmit(){
