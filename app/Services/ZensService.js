@@ -5,7 +5,7 @@ import { sandboxApi } from "./AxiosService.js"
 class ZensService{
 
     async getTodos() {
-        let res = await sandboxApi.get('andrew/todos')
+        let res = await sandboxApi.get('thomf/todos')
         console.log('[GETTING MY TODOS]', res.data)
         appState.zens = res.data.map(z => new Zen(z))
         console.log(appState.zens)

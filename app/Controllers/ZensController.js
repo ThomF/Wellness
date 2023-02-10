@@ -18,13 +18,24 @@ export class ZensController{
 
         this.getTodos()
         appState.on('zens', _drawTodos)
-        
     }
 
     async handleTodoSubmit(){
-        let form = event?.target
+        
+    try {
+        console.log("handle the submit")
+          // @ts-ignore
+        event.preventDefault()
+          // @ts-ignore
+        let form = event.target
         let formData = getFormData(form)
         await zensService.handTodoSubmit(formData)
+        // @ts-ignore
+        form.reset()
+    } catch (error) {
+        console.error(error)
+        Pop.error(error)
+    }
     }
 
     async UpdateTodo(todoId){
