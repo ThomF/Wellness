@@ -1,8 +1,10 @@
 import { appState } from "../AppState.js"
+import { HomePage } from "../Models/HomePage.js"
 import { Zen } from "../Models/Zen.js"
 import { sandboxApi } from "./AxiosService.js"
 
 class ZensService{
+  
     async exileNote(noteId) {
         const res = await sandboxApi.delete(`thomf/todos/${noteId}`)
         console.log('[EXILE TODO]', res.data)
@@ -48,6 +50,15 @@ class ZensService{
         let res = await sandboxApi.get('thomf/todos/', appState.zens)
         console.log('[my todos]',res.data)
         
+    }
+
+
+    // STUB Home Page Background
+
+    async getImages() {
+        const res = await sandboxApi.get('images/')
+        appState.background = new HomePage(res.data)
+        console.log(res.data)
     }
 
 
