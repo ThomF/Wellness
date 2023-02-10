@@ -41,6 +41,7 @@ export class ZensController{
 
     async UpdateTodo(todoId){
         try {
+            console.log("updating")
             await zensService.updateTodo(todoId)
         } catch (error) {
             console.error(error)

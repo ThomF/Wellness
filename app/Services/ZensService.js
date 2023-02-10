@@ -16,12 +16,10 @@ class ZensService{
         const todoIndex = appState.zens.findIndex(z => z.id == todoId)
         const foundTodo = appState.zens[todoIndex]
 
-        const res = await sandboxApi.put(`thomf/todos/${todoId}`, {prepared : !foundTodo.prepared})
+        const res = await sandboxApi.put(`thomf/todos/${todoId}`, {completed : !foundTodo.completed})
         console.log('[update todo]', res.data)
 
-        let createdTodo = new Zen
-// TODO delete
-        // appState.zens.splice
+
 
     }
 
