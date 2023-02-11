@@ -88,7 +88,7 @@ class ZensService {
         // appState.temp = res.data
         console.log('[getTemp]', res.data)
         appState.temp = new HomePage(res.data)
-
+        // res.data.results
     }
 
     // kelvin() {
