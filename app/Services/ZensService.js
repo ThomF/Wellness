@@ -1,5 +1,6 @@
 import { appState } from "../AppState.js"
 import { HomePage } from "../Models/HomePage.js"
+import { Weather } from "../Models/Weather.js"
 import { Zen } from "../Models/Zen.js"
 import { setHTML, setText } from "../Utils/Writer.js"
 import { sandboxApi } from "./AxiosService.js"
@@ -86,8 +87,8 @@ class ZensService {
     async getTemp() {
         let res = await sandboxApi.get('weather')
         // appState.temp = res.data
-        console.log('[getTemp]', res.data)
-        appState.temp = new HomePage(res.data)
+        console.log('[getting the Weather]', res.data)
+        appState.temp = new Weather(res.data)
         // res.data.results
     }
 

@@ -17,11 +17,7 @@ function _drawQuote() {
     // console.log('quotes are fake')
 }
 
-function _drawWeather() {
-    let temp = appState.temp
-    console.log('[_drawWeather]', temp)
-    setHTML('weather', temp?.tempTemplate)
-}
+
 
 export class HomepageController {
 
@@ -29,11 +25,10 @@ export class HomepageController {
         // debugger
         this.getImages()
         this.getQuote()
-        this.getTemp()
+
         // console.log("home page up and running")
         appState.on('quote', _drawQuote)
         appState.on('background', _drawHomeImage)
-        appState.on('temp', _drawWeather)
 
     }
 
@@ -56,13 +51,5 @@ export class HomepageController {
         }
     }
 
-    async getTemp() {
-        try {
-            zensService.getTemp()
-            // zensService.kelvin()
-        } catch (error) {
-            console.error(error)
-            Pop.error(error)
-        }
-    }
+
 }

@@ -16,11 +16,21 @@ class AppState extends EventEmitter {
   HomePage = []
   /** @type {import('./Models/HomePage').HomePage | null} */
   quote = null
-  /** @type {import('./Models/HomePage').HomePage[]} */
+
+  // NOTE weather specific
+  /** @type {import('./Models/Weather').Weather[]} */
   weather = []
-  /** @type {import('./Models/HomePage').HomePage | null}*/
+  /** @type {import('./Models/Weather').Weather | null}*/
   temp = null
 }
+
+
+
+
+
+
+
+
 
 export const appState = new Proxy(new AppState(), {
   get(target, prop) {
