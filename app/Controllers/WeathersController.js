@@ -22,7 +22,7 @@ export class WeathersController {
     async getTemp() {
         try {
             zensService.getTemp()
-            // zensService.kelvin()
+            zensService.kelvin()
         } catch (error) {
             console.error(error)
             Pop.error(error)

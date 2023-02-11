@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/style/style.css">
   <title>zenpoint</title>
 </head>
-<!-- <style>
+<style>
   body.debug .container,
   body.debug .container-fluid {
     outline: 2px double blue;
@@ -30,15 +30,40 @@
     outline: 2px dotted forestgreen;
     outline-offset: -3px;
   }
-</style> -->
+</style>
 
 <body class="debug">
+
+  <header class="container-fluid p-2 justify-content-end">
+    <div class="row">
+      <div class="col-9"></div>
+      <div class="col-3 justify-content-end">
+        <div class=" text-light text-center">
+          <button class="btn frosted justify-content-end">
+            <div class="text-center text-light" id="weather"></div>
+            <div class="text-center text-light" id="currentTemp"></div>
+          </button>
+          <div class="col-2" id="currentC"></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </header>
 
   <main>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12">
-          <div class="card">
+        <div class="col-8">
+          <div class="card ">
+            <div class="card-body">
+              <div class="col-6" id="currentTime"></div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card frosted">
             <div class="card-body">
               <form onsubmit="app.zensController.handleTodoSubmit()">
                 <div class="form-floating mb-3 p-2">
@@ -46,11 +71,14 @@
                     <div class="col-9">
                       <div id="todo-count"></div>
                       <label for="jotTitle">new zen-do</label>
-                      <input type="text" class="form-control" name="description" id="todoDescription" pattern=".{3,15}"
-                        required>
+                      <div class="d-flex flex-row">
+                        <input type="text" class="form-control" name="description" id="todoDescription"
+                          pattern=".{3,15}" required>
+                        <button class="btn btn-outline-dark ms-1" type="submit">ADD</button>
+                      </div>
                     </div>
                     <div class="pt-1">
-                      <button class="btn btn-outline-dark pt-1" type="submit">ADD</button>
+
                     </div>
                   </div>
                 </div>
@@ -72,24 +100,27 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="card">
-          <div class="card-body">
-            <div class="col-6" id="currentTime"></div>
-            <div class="col-6">
-              <span id="time"></span>
-            </div>
-          </div>
-        </div>
+
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="card">
           <div class="card-body">
             <div class="col-6" id="weather"></div>
+            <div class="col-3" id="currentTemp"></div>
+            <div class="col-3" id="currentC"></div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </main>
+
+  <footer>
+    <div class="col-12 text-light text-center">
+      <div class="frosted">
+        <span id="time"></span>
+      </div>
+    </div>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
     integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="

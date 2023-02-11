@@ -92,16 +92,22 @@ class ZensService {
         // res.data.results
     }
 
-    // kelvin() {
-    //     let temp = appState.temp
-    //     let kelvin = temp?.main
-    //     let celsius = kelvin - 273.15
-    //     let fahrenheit = celsius * 9 / 5 + 32
+    async kelvin() {
+        let weather = await sandboxApi.get('weather')
+        let kelvin = weather.data.main.temp
+        let c = kelvin - 273.15
+        let f = c * 9 / 5 + 32
 
-    //     console.log('[This is the]', kelvin)
-    //     console.log('[This is the]', celsius)
-    //     console.log('[This is the]', fahrenheit)
-    // }
+        let celsius = c.toFixed(0)
+        let fahrenheit = f.toFixed(0)
+        // console.log('[Showing data in async kelvin]', kelvin)
+        console.log('[Kelvin]', kelvin)
+        console.log('[Celsius]', celsius)
+        console.log('[Fahrenheit]', fahrenheit)
+
+        setText('currentTemp', fahrenheit)
+        // setText('currentC', celsius)
+    }
 
     //NOTE - TIME
     displayTime() {
