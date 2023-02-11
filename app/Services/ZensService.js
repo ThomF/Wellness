@@ -84,24 +84,23 @@ class ZensService {
     }
     //NOTE - temperature
     async getTemp() {
-        let res = await sandboxApi.get('weather', appState.temp)
-
-        appState.temp = res.data.map(t => new HomePage(t))
-        // console.log('[getTemp]', res.data)
-        // appState.temp = new HomePage(res.data)
+        let res = await sandboxApi.get('weather')
+        // appState.temp = res.data
+        console.log('[getTemp]', res.data)
+        appState.temp = new HomePage(res.data)
 
     }
 
-    kelvin() {
-        let temp = appState.temp
-        let kelvin = temp?.main
-        let celsius = kelvin - 273.15
-        let fahrenheit = celsius * 9 / 5 + 32
+    // kelvin() {
+    //     let temp = appState.temp
+    //     let kelvin = temp?.main
+    //     let celsius = kelvin - 273.15
+    //     let fahrenheit = celsius * 9 / 5 + 32
 
-        console.log('[This is the]', kelvin)
-        console.log('[This is the]', celsius)
-        console.log('[This is the]', fahrenheit)
-    }
+    //     console.log('[This is the]', kelvin)
+    //     console.log('[This is the]', celsius)
+    //     console.log('[This is the]', fahrenheit)
+    // }
 
     //NOTE - TIME
     displayTime() {

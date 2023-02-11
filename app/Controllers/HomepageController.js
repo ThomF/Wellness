@@ -18,9 +18,9 @@ function _drawQuote() {
 }
 
 function _drawWeather() {
-    let localWeather = appState.temp
-    console.log('[_drawWeather]', localWeather)
-    setHTML('weather', localWeather?.tempTemplate)
+    let temp = appState.temp
+    console.log('[_drawWeather]', temp)
+    setHTML('weather', temp?.tempTemplate)
 }
 
 export class HomepageController {
@@ -30,7 +30,7 @@ export class HomepageController {
         this.getImages()
         this.getQuote()
         this.getTemp()
-        console.log("home page up and running")
+        // console.log("home page up and running")
         appState.on('quote', _drawQuote)
         appState.on('background', _drawHomeImage)
         appState.on('temp', _drawWeather)
@@ -39,7 +39,7 @@ export class HomepageController {
 
     async getImages() {
         try {
-            console.log("getting image")
+            // console.log("getting image")
             await zensService.getImages()
         } catch (error) {
             console.error(error)
@@ -59,7 +59,7 @@ export class HomepageController {
     async getTemp() {
         try {
             zensService.getTemp()
-            zensService.kelvin()
+            // zensService.kelvin()
         } catch (error) {
             console.error(error)
             Pop.error(error)
