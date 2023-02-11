@@ -4,6 +4,12 @@ import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
 import { setHTML, setText } from "../Utils/Writer.js";
 
+function displayTime() {
+    zensService.displayTime()
+
+    zensService.autoSecond()
+
+    }
 
 function _drawTodos(){
     let template = ''
@@ -18,7 +24,7 @@ export class ZensController{
 
     constructor(){
         // console.log("zenscontroller")
-
+        displayTime()
         this.getTodos()
         appState.on('zens', _drawTodos)
     

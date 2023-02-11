@@ -14,10 +14,10 @@ class AppState extends EventEmitter {
   background = null
   /** @type {import('./Models/HomePage').HomePage[]} */
   HomePage = []
-
   /** @type {import('./Models/HomePage').HomePage | null} */
   quote = null
-
+  /** @type {import('./Models/HomePage').HomePage | null} */
+  temp = null
 }
 
 export const appState = new Proxy(new AppState(), {
