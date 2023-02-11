@@ -6,9 +6,9 @@ import { loadState } from "./Utils/Store.js"
 class AppState extends EventEmitter {
   /** @type {import('./Models/Value').Value[]} */
   values = loadState('values', [Value])
-/** @type {import('./Models/Zen').Zen | null} */
+  /** @type {import('./Models/Zen').Zen | null} */
   zen = null
-/** @type {import('./Models/Zen').Zen[]} */
+  /** @type {import('./Models/Zen').Zen[]} */
   zens = []
   /** @type {import('./Models/HomePage').HomePage | null} */
   background = null
@@ -16,8 +16,8 @@ class AppState extends EventEmitter {
   HomePage = []
   /** @type {import('./Models/HomePage').HomePage | null} */
   quote = null
-  /** @type {import('./Models/HomePage').HomePage | null} */
-  temp = null
+  /** @type {import('./Models/Weather').Weather[]} */
+  temp = []
 }
 
 export const appState = new Proxy(new AppState(), {

@@ -4,27 +4,28 @@ import { Pop } from "../Utils/Pop.js"
 import { setHTML, setText } from "../Utils/Writer.js"
 
 
-function _drawHomeImage(){
-    console.log("[drawing bg appstate]",appState.background)
+function _drawHomeImage() {
+    // console.log("[drawing bg appstate]", appState.background)
     // @ts-ignore
-    document.body.style.backgroundImage =  `url("${appState.background.image}")`
+    document.body.style.backgroundImage = `url("${appState.background.image}")`
 }
 
 
-function _drawQuote(){
+function _drawQuote() {
     let quote = appState.quote
     setHTML('time', quote?.quoteTemplate)
-    console.log('quotes are fake')
+    // console.log('quotes are fake')
 }
 
-function _drawWeather(){
-    let weather = appState.temp
-    setHTML('weather', weather?.tempTemplate)
+function _drawWeather() {
+    let localWeather = appState.temp
+    console.log('[_drawWeather]', localWeather)
+    setHTML('weather', localWeather?.tempTemplate)
 }
 
-export class HomepageController{
+export class HomepageController {
 
-    constructor(){
+    constructor() {
         // debugger
         this.getImages()
         this.getQuote()
@@ -32,11 +33,11 @@ export class HomepageController{
         console.log("home page up and running")
         appState.on('quote', _drawQuote)
         appState.on('background', _drawHomeImage)
-        // this.getTime()
-        
+        appState.on('temp', _drawWeather)
+
     }
 
-    async getImages(){
+    async getImages() {
         try {
             console.log("getting image")
             await zensService.getImages()
@@ -47,7 +48,7 @@ export class HomepageController{
 
 
 
-    async getQuote(){
+    async getQuote() {
         try {
             await zensService.getQuote()
         } catch (error) {
@@ -55,9 +56,10 @@ export class HomepageController{
         }
     }
 
-    async getTemp(){
+    async getTemp() {
         try {
             zensService.getTemp()
+            zensService.kelvin()
         } catch (error) {
             console.error(error)
             Pop.error(error)

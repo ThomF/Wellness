@@ -9,9 +9,9 @@ function displayTime() {
 
     zensService.autoSecond()
 
-    }
+}
 
-function _drawTodos(){
+function _drawTodos() {
     let template = ''
     appState.zens.forEach(z => template += z.ZenTodo)
     setHTML('todo-list', template)
@@ -20,20 +20,20 @@ function _drawTodos(){
     zensService.todoCounter()
 }
 
-export class ZensController{
+export class ZensController {
 
-    constructor(){
+    constructor() {
         // console.log("zenscontroller")
         displayTime()
         this.getTodos()
         appState.on('zens', _drawTodos)
-    
+
     }
 
 
-    async exileNote(noteId){
+    async exileNote(noteId) {
         try {
-            if(await Pop.confirm('Are you sure you want to Exile this Todo?')){
+            if (await Pop.confirm('Are you sure you want to Exile this Todo?')) {
                 await zensService.exileNote(noteId)
             }
         } catch (error) {
@@ -42,25 +42,25 @@ export class ZensController{
         }
     }
 
-    async handleTodoSubmit(){
-        
-    try {
-        console.log("handle the submit")
-          // @ts-ignore
-        event.preventDefault()
-          // @ts-ignore
-        let form = event.target
-        let formData = getFormData(form)
-        await zensService.handTodoSubmit(formData)
-        // @ts-ignore
-        form.reset()
-    } catch (error) {
-        console.error(error)
-        Pop.error(error)
-    }
+    async handleTodoSubmit() {
+
+        try {
+            // console.log("handle the submit")
+            // @ts-ignore
+            event.preventDefault()
+            // @ts-ignore
+            let form = event.target
+            let formData = getFormData(form)
+            await zensService.handTodoSubmit(formData)
+            // @ts-ignore
+            form.reset()
+        } catch (error) {
+            console.error(error)
+            Pop.error(error)
+        }
     }
 
-    async UpdateTodo(todoId){
+    async UpdateTodo(todoId) {
         try {
 
             await zensService.updateTodo(todoId)
@@ -70,7 +70,7 @@ export class ZensController{
         }
     }
 
-    async getTodos(){
+    async getTodos() {
         try {
             await zensService.getTodos()
         } catch (error) {
@@ -78,7 +78,7 @@ export class ZensController{
             Pop.error(error)
         }
     }
-    
+
 
 
 }
