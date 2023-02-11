@@ -2,23 +2,26 @@ import { appState } from "../AppState.js";
 import { zensService } from "../Services/ZensService.js";
 import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
-import { setHTML } from "../Utils/Writer.js";
+import { setHTML, setText } from "../Utils/Writer.js";
 
 
 function _drawTodos(){
     let template = ''
     appState.zens.forEach(z => template += z.ZenTodo)
     setHTML('todo-list', template)
+
+    // NOTE counts the checked
+    zensService.todoCounter()
 }
 
 export class ZensController{
 
     constructor(){
-        console.log("zenscontroller")
+        // console.log("zenscontroller")
 
         this.getTodos()
         appState.on('zens', _drawTodos)
-        
+    
     }
 
 
@@ -53,7 +56,7 @@ export class ZensController{
 
     async UpdateTodo(todoId){
         try {
-            console.log("updating")
+
             await zensService.updateTodo(todoId)
         } catch (error) {
             console.error(error)

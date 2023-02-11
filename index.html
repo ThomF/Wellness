@@ -44,6 +44,7 @@
                 <div class="form-floating mb-3 p-2">
                   <div class="row">
                     <div class="col-9">
+                      <div id="todo-count"></div>
                       <label for="jotTitle">new zen-do</label>
                       <input type="text" class="form-control" name="description" id="todoDescription" pattern=".{3,15}"
                         required>
@@ -62,13 +63,24 @@
 
         </div>
       </div>
-      <div class="row"></div>
+
       <!-- <div class="col-12 text-center">
           <input ${this.prepared ? 'checked' : '' } onchange="app.ZensController.UpdateTodo('${this.id}')"
             class="form-check-input" type="checkbox" value="" id="todoCheck">
           <span>${this.description}</span>
         </div>-->
-
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-6">Zoinks</div>
+            <div class="col-6">
+              <span id="time"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 

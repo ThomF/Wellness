@@ -6,7 +6,7 @@ export class Zen{
         this.image = data.image
         this.quotes = data.quotes
         this.description = data.description
-        this.completed = data.completed || false
+        this.completed = data.completed 
     }
 
 
