@@ -89,6 +89,10 @@ class ZensService {
         // appState.temp = res.data
         console.log('[getting the Weather]', res.data)
         appState.temp = new Weather(res.data)
+        // let temp = res.formData
+        // let c = temp.timezone
+
+        // setText('note', c)
         // res.data.results
     }
 
