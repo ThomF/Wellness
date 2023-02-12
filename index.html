@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/style/style.css">
   <title>zenpoint</title>
 </head>
-<style>
+<!-- <style>
   body.debug .container,
   body.debug .container-fluid {
     outline: 2px double blue;
@@ -30,87 +30,82 @@
     outline: 2px dotted forestgreen;
     outline-offset: -3px;
   }
-</style>
+</style> -->
 
 <body class="debug">
 
-  <header class="container-fluid p-2 justify-content-end">
+  <header class="container p-2 justify-content-end">
     <div class="row">
       <div class="col-9"></div>
       <div class="col-3 justify-content-end">
         <div class=" text-light text-center">
-          <button class="btn frosted justify-content-end">
+          <button class="btn frosted justify-content-end" onclick="app.zensController.toggleWeather()">
             <div class="text-center text-light" id="weather"></div>
-            <div class="text-center text-light" id="currentTemp"></div>
+            <div class="text-center text-light" id="currentTemp">
+            </div>
           </button>
           <div class="col-2" id="currentC"></div>
         </div>
       </div>
     </div>
-
     </div>
   </header>
 
-  <main>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-8">
-          <div class="card ">
-            <div class="card-body">
-              <div class="col-6" id="currentTime"></div>
 
+  <main>
+    <div class="container-fluid ">
+      <div class="row align-items-center">
+        <!-- SECTION Current Time -->
+        <div class="col-4"></div>
+        <div class="col-4 ">
+          <div class="frosted text-center">
+            <div class="time text-light">
+              <strong id="currentTime"></strong>
             </div>
           </div>
         </div>
+        <div class="col-4"></div>
+      </div>
+
+      <!-- </div>
+
+      <div class="col-12 text-center">
+          <input ${this.prepared ? 'checked' : '' } onchange="app.ZensController.UpdateTodo('${this.id}')"
+            class="form-check-input" type="checkbox" value="" id="todoCheck">
+          <span>${this.description}</span>
+        </div> -->
+    </div>
+    <div class="container-fluid">
+      <!-- SECTION todo list -->
+
+      <div class="row">
+        <div class="col-8"></div>
         <div class="col-4">
-          <div class="card frosted">
+          <div class="card frosted text-light">
             <div class="card-body">
               <form onsubmit="app.zensController.handleTodoSubmit()">
                 <div class="form-floating mb-3 p-2">
                   <div class="row">
-                    <div class="col-9">
-                      <div id="todo-count"></div>
-                      <label for="jotTitle">new zen-do</label>
+                    <div class="col-12">
+                      <div></div>
+                      <label for="jotTitle">To-Do <span id="todo-count"></span></label>
                       <div class="d-flex flex-row">
-                        <input type="text" class="form-control" name="description" id="todoDescription"
+                        <input type="text" class="form-control frosted-x" name="description" id="todoDescription"
                           pattern=".{3,15}" required>
-                        <button class="btn btn-outline-dark ms-1" type="submit">ADD</button>
+                        <button class="btn btn-outline-light ms-1" type="submit">ADD</button>
                       </div>
-                    </div>
-                    <div class="pt-1">
-
                     </div>
                   </div>
                 </div>
               </form>
               <div class="col-12" id="todo-list">
-
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
-      <!-- <div class="col-12 text-center">
-          <input ${this.prepared ? 'checked' : '' } onchange="app.ZensController.UpdateTodo('${this.id}')"
-            class="form-check-input" type="checkbox" value="" id="todoCheck">
-          <span>${this.description}</span>
-        </div>-->
-    </div>
-    <div class="container">
-      <div class="row">
 
-      </div>
-      <!-- <div class="row">
-        <div class="card">
-          <div class="card-body">
-            <div class="col-6" id="weather"></div>
-            <div class="col-3" id="currentTemp"></div>
-            <div class="col-3" id="currentC"></div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </main>
 

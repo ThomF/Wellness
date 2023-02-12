@@ -20,6 +20,14 @@ function _drawTodos() {
     zensService.todoCounter()
 }
 
+function _weatherToggle() {
+    let weatherToggle = appState.weatherToggle == 'fahrenheit' ? '<span class="mdi mdi-temperature-fahrenheit"></span><div class="text-center text-light" id="currentTempF">F</div>' : '<span class="mdi mdi-temperature-celsius"></span><div class="text-center text-light" id="currentTempC">C</div>'
+
+    document.body.className = appState.weatherToggle
+
+    setHTML('currentTemp', weatherToggle)
+}
+
 export class ZensController {
 
     constructor() {
@@ -28,6 +36,8 @@ export class ZensController {
         this.getTodos()
         appState.on('zens', _drawTodos)
 
+        appState.on('weatherToggle', _weatherToggle)
+        _weatherToggle()
     }
 
 
@@ -79,6 +89,10 @@ export class ZensController {
         }
     }
 
-
+    toggleWeather() {
+        console.log("[toggling the weather]")
+        // zensService.toggleWeather()
+        zensService.kelvin()
+    }
 
 }

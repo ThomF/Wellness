@@ -11,13 +11,18 @@ function _drawWeather() {
     setHTML('weather', temp?.weatherTemplate)
 }
 
+
+
 export class WeathersController {
 
     constructor() {
         this.getTemp()
         appState.on('temp', _drawWeather)
 
+
     }
+
+
 
     async getTemp() {
         try {
