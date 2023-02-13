@@ -23,7 +23,7 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Weather').Weather | null}*/
   temp = null
 
-  weatherToggle = 'fahrenheit'
+  weatherToggle = 'celsius'
 
 }
 
