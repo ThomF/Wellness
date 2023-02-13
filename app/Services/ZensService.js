@@ -109,13 +109,14 @@ class ZensService {
         console.log('[Celsius]', celsius)
         console.log('[Fahrenheit]', fahrenheit)
 
-        if (appState.weatherToggle == 'fahrenheit') {
-            appState.weatherToggle = 'celsius'
-            setText('currentTempC', celsius)
-        }
-        else if (appState.weatherToggle == 'celsius') {
+        if (appState.weatherToggle == 'celsius') {
             appState.weatherToggle = 'fahrenheit'
             setText('currentTempF', fahrenheit)
+
+        }
+        else if (appState.weatherToggle == 'fahrenheit') {
+            appState.weatherToggle = 'celsius'
+            setText('currentTempC', celsius)
 
         }
 
