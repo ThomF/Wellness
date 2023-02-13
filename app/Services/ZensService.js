@@ -100,7 +100,7 @@ class ZensService {
         let weather = await sandboxApi.get('weather')
         let kelvin = weather.data.main.temp
         let c = kelvin - 273.15
-        let f = c * 9 / 5 + 32
+        let f = c * (9 / 5) + 32
 
         let celsius = c.toFixed(0)
         let fahrenheit = f.toFixed(0)
